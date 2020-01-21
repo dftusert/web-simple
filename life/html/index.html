@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <meta charset ="utf8" />
+        <link rel = "stylesheet" href = "..css//index.css" />
+        <script type = "text/javascript" src = "../js/variables.js"></script>
+        <script type = "text/javascript" src = "../js/DLogic.js"></script>
+        <script type = "text/javascript" src = "../js/events.js"></script>
+        <script type = "text/javascript" src = "../js/init.js"></script>
+    </head>
+    <body>
+        <div id = "menu_bar">
+            <input type = "button" value = "new game" onclick = "setNewGame ()" />
+            <input type = "button" value = "step" onclick = "makeStep ()" />
+            <input type = "button" value = "go" onclick = "makeGo ()" />
+            <input type = "button" value = "pause/unpause" onclick = "pause ()" />
+            <input type = "button" value = "field_settings" onclick = "field_settingsClick ()" />
+        </div>
+        <div id = "field_settings" class= "hide">
+            <input type = "text" placeholder = "sqrX" id = "sqrX" /><br>
+            <input type = "text" placeholder = "sqrY" id = "sqrY" /><br> 
+            <input type = "button" value = "set" onclick = "changeXYPX_onclick ()" /><br>
+            <input type = "text" placeholder = "xCount" id = "xCount" /><br>
+            <input type = "text" placeholder = "yCount" id = "yCount" /><br> 
+            <input type = "button" value = "set" onclick = "changeCount_onclick ()" /><br>
+            <input type = "text" placeholder = "canvasX" id = "canvasX" /><br>
+            <input type = "text" placeholder = "canvasY" id = "canvasY" /><br> 
+            <input type = "button" value = "set" onclick = "changeCanvas_onclick ()" /><br>
+        </div>
+        <canvas id = "main_field" width = "500" height = "500"></canvas>
+    </body>
+</html>

@@ -1,0 +1,44 @@
+.hidden {
+    display : none;
+}
+
+.visible {
+    display : block;
+}
+
+.isMarked {
+    background-color : #FF0000;
+}
+
+.notMarked {
+    background-color : #00FF00;
+}
+
+#header {
+    position : fixed;
+    width : 10%;
+    height: 100%;
+}
+
+#menu, #info, #main {
+    margin-left : 11%;
+    border-left: 3px dashed black;
+}
+
+.data {
+    height : 60%;
+}
+
+#field {
+    margin-left : 3px;
+}
+
+.buttons {
+    margin-top : 60%;
+}
+
+#gameButton, #settingsButton, #infoButton, #markButton {
+   width : 100%;
+}
+
+

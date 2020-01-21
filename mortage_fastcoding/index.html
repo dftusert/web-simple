@@ -1,0 +1,338 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="main.css" />
+    <script type="text/javascript" src="consts.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+</head>
+
+<body>
+    <div class="main">
+        <div id="error" class="hidden"></div>
+        <div id="data" class="visible">
+            <div class="line">
+                <div id="cred_sum" style="float: left;">Сумма кредита</div>
+                <div id="month_pay" style="float: right;">Ежемесячный платеж</div>
+            </div>
+            <div class="line">
+                <div id="credit_sum" class="calc_data_left"></div>
+                <div id="everymonth_pay" class="calc_data_right"></div>
+            </div>
+            <div class="line">
+                <div id="req_inc" style="float: left;">Необходимый доход</div>
+                <div id="prcnt_val" style="float: right;">Процентная ставка</div>
+            </div>
+            <div class="line">
+                <div id="required_income" class="calc_data_left"></div>
+                <div id="interest_rate" class="calc_data_right"></div>
+            </div>
+        </div>
+    </div>
+    <div class="tbl_wrapper">
+        <input id="tbl_shower" type="button" value="Показать/Скрыть график платежей" class="tbl_inp_open" />
+        <div id="tbl_container" class="hidden"></div>
+    </div>
+    <div class="calc_wrapper">
+        <div class="calc_line">
+            <div class="text_info_select">Цель кредита</div>
+            <div class="data_input_select">
+                <select id="credit_dest" autocomplete="off">
+                    <option selected="selected" value="SECONDARY_APARTMENT">Покупка вторичной квартиры</option>
+                    <option value="APARTMENT_NEW_BUILDING">Покупка квартиры в новостройке</option>
+                    <option value="HOUSE_BUILDING">Строительство дома</option>
+                    <option value="FOREIGN_HOUSE_BUYING">Покупка загородного дома</option>
+                    <option value="UNG_MOR_CREDIT">Нецелевой ипотечный кредит</option>
+                    <option value="REF_MOR_ANOTHER_BANK">Рефинансирование ипотеки другого банка</option>
+                    <option value="MILITARY_MORTGAGE">Военная ипотека</option>
+                    <option value="MORT_STATE_SUPP_WITH_CHILD">Ипотека с господдержкой для семей с детьми</option>
+                    <option value="GARAGE_BUYING">Приобретение машиноместа или гаража</option>
+                </select>
+            </div>
+        </div>
+        <div class="calc_line">
+            <div id="nedv_price" class="text_info">Стоимость недвижимости</div>
+            <div class="data_input">
+                <input type="text" id="input1" class="baseinp" /><br />
+                <div class="slidecontainer">
+                    <input type="range" min="300000" max="30000000" class="slider" id="slider1">
+                </div>
+                <p></p>
+                <div class="spanholder">
+                    <div id="slider1_min_description" style="float: left; text-align: left; color: #4b545b;"></div>
+                    <div id="slider1_max_description" style="float: right; text-align: right; color: #4b545b;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="calc_line">
+            <div id="first_pmt" class="text_info">Первоначальный взнос</div>
+            <div class="data_input">
+                <input type="text" id="input2" class="baseinp" /><br />
+                <div class="slidecontainer">
+                    <input type="range" min="45000" max="10000000" class="slider" id="slider2">
+                </div>
+                <p></p>
+                <div class="spanholder">
+                    <div id="slider2_min_description" class="sponeline" style="float: left; text-align: left; color: #4b545b;">45
+                        тыс.</div>
+                    <div id="slider2_max_description" class="sponeline" style="float: right; text-align: right; color: #4b545b;">10
+                        млн.</div>
+                </div>
+            </div>
+        </div>
+        <div class="calc_line">
+            <div id="credit_time" class="text_info">Срок кредита</div>
+            <div class="data_input">
+                <input type="text" id="input3" class="baseinp" /><br />
+                <div class="slidecontainer">
+                    <input type="range" min="1" max="30" class="slider" id="slider3">
+                </div>
+                <p></p>
+                <div class="spanholder">
+                    <div id="slider3_min_description" style="float: left; text-align: left; color: #4b545b;">1 год</div>
+                    <div id="slider3_max_description" style="float: right; text-align: right; color: #4b545b;">30 лет</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="blocks_holder" class="blocks_holder">
+        <div id="sec_apartment_id">
+            <table class="block_content">
+                <tr class="bonus_data">
+                    <td class="content">Скидка 0,3% при покупке квартиры на ДомКлик</td>
+                    <td class="bonus_value"><input class='hidden' value="0.3" />-0.3%</td>
+                    <td class="checkbox_holder">
+                        <input id="sa_ch_1" class="check_box" type="checkbox" onclick="sync_chanel()" autocomplete="off" />
+                        <label for="sa_ch_1"></label>
+                    </td>
+                </tr>
+                <tr class="bonus_data">
+                    <td class="content">Есть зарплатная карта Сбербанка</td>
+                    <td class="bonus_value"><input class='hidden' value="0.3" /></td>
+                    <td class="checkbox_holder">
+                        <input id="sa_ch_2" class="check_box" type="checkbox" onclick="hide_show_if(this, 'sa_ndfl')"
+                            autocomplete="off" />
+                        <label for="sa_ch_2"></label>
+                    </td>
+                </tr>
+                <tr id="sa_ndfl" class="bonus_data">
+                    <td class="content">Есть возможность подтвердить доход справкой 2-НДФЛ или по форме банка</td>
+                    <td class="bonus_value"><input class='hidden' value="0.3" />-0.3%</td>
+                    <td class="checkbox_holder">
+                        <input id="sa_ch_3" class="check_box" type="checkbox" onclick="sync_chanel()" autocomplete="off" />
+                        <label for="sa_ch_3"></label>
+                    </td>
+                </tr>
+                <tr class="bonus_data">
+                    <td class="content">Страхование жизни</td>
+                    <td class="bonus_value"><input class='hidden' value="1.0" />-1%</td>
+                    <td class="checkbox_holder">
+                        <input id="sa_ch_4" class="check_box" type="checkbox" onclick="sync_chanel()" autocomplete="off" />
+                        <label for="sa_ch_4"></label>
+                    </td>
+                </tr>
+                <tr class="bonus_data">
+                    <td class="content">Электронная регистрация</td>
+                    <td class="bonus_value"><input class='hidden' value="0.1" />-0.1%</td>
+                    <td class="checkbox_holder">
+                        <input id="sa_ch_5" class="check_box" type="checkbox" onclick="sync_chanel()" autocomplete="off" />
+                        <label for="sa_ch_5"></label>
+                    </td>
+                </tr>
+                <tr class="bonus_data">
+                    <td class="content">Молодая семья</td>
+                    <td class="bonus_value"><input class='hidden' value="0.5" />-0.5%</td>
+                    <td class="checkbox_holder">
+                        <input id="sa_ch_6" class="check_box" type="checkbox" onclick="sync_chanel()" autocomplete="off" />
+                        <label for="sa_ch_6"></label>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="new_building_apartment_id">
+            <table class="block_content">
+                <tr class="bonus_data">
+                    <td class="content">Есть зарплатная карта Сбербанка</td>
+                    <td class="bonus_value"><input class='hidden' value="0.3" /></td>
+                    <td class="checkbox_holder">
+                        <input id="nb_ch_1" class="check_box" type="checkbox" onclick="hide_show_if(this, 'nb_ndfl');"
+                            autocomplete="off" />
+                        <label for="nb_ch_1"></label>
+                    </td>
+                </tr>
+                <tr id="nb_ndfl" class="bonus_data">
+                    <td class="content">Есть возможность подтвердить доход справкой 2-НДФЛ или по форме банка</td>
+                    <td class="bonus_value"><input class='hidden' value="0.3" />-0.3%</td>
+                    <td class="checkbox_holder">
+                        <input id="nb_ch_2" class="check_box" type="checkbox" onclick="sync_chanel()" autocomplete="off" />
+                        <label for="nb_ch_2"></label>
+                    </td>
+                </tr>
+                <tr class="bonus_data">
+                    <td class="content">Страхование жизни</td>
+                    <td class="bonus_value"><input class='hidden' value="1.0" />-1%</td>
+                    <td class="checkbox_holder">
+                        <input id="nb_ch_3" class="check_box" type="checkbox" onclick="sync_chanel()" autocomplete="off" />
+                        <label for="nb_ch_3"></label>
+                    </td>
+                </tr>
+                <tr class="bonus_data">
+                    <td class="content">Электронная регистрация</td>
+                    <td class="bonus_value"><input class='hidden' value="0.1" />-0.1%</td>
+                    <td class="checkbox_holder">
+                        <input id="nb_ch_4" class="check_box" type="checkbox" onclick="sync_chanel()" autocomplete="off" />
+                        <label for="nb_ch_4"></label>
+                    </td>
+                </tr>
+                <tr class="bonus_data">
+                    <td class="content">Скидка от застройщика (срок кредита не более 12 лет)</td>
+                    <td class="bonus_value"><input class='hidden' value="2.0" />-2%</td>
+                    <td class="checkbox_holder">
+                        <input id="nb_ch_5" class="check_box" type="checkbox" autocomplete="off" onclick="check_years_le_snc(this, 12)" />
+                        <label for="nb_ch_5"></label>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+        <div id="refin_another_bank_id">
+            <table class="block_content">
+                <tr id="nb_ndfl" class="bonus_data">
+                    <td class="content">Страхование жизни</td>
+                    <td class="bonus_value"><input class='hidden' value="1.0" />-1%</td>
+                    <td class="checkbox_holder">
+                        <input id="rb_ch_1" class="check_box" type="checkbox" onclick="sync_chanel()" autocomplete="off" />
+                        <label for="rb_ch_1"></label>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <div id="house_building_id">
+            <table class="block_content">
+                <tr class="bonus_data">
+                    <td class="content">Есть зарплатная карта Сбербанка</td>
+                    <td class="bonus_value"><input class='hidden' value="0.3" /></td>
+                    <td class="checkbox_holder">
+                        <input id="hb_ch_1" class="check_box" type="checkbox" onclick="hide_show_if(this, 'hb_ndfl');"
+                            autocomplete="off" />
+                        <label for="hb_ch_1"></label>
+                    </td>
+                </tr>
+                <tr id="hb_ndfl" class="bonus_data">
+                    <td class="content">Есть возможность подтвердить доход справкой 2-НДФЛ или по форме банка</td>
+                    <td class="bonus_value"><input class='hidden' value="0.3" />-0.3%</td>
+                    <td class="checkbox_holder">
+                        <input id="hb_ch_2" class="check_box" type="checkbox" onclick="sync_chanel()" autocomplete="off" />
+                        <label for="hb_ch_2"></label>
+                    </td>
+                </tr>
+                <tr class="bonus_data">
+                    <td class="content">Страхование жизни</td>
+                    <td class="bonus_value"><input class='hidden' value="1.0" />-1%</td>
+                    <td class="checkbox_holder">
+                        <input id="hb_ch_3" class="check_box" type="checkbox" onclick="sync_chanel()" autocomplete="off" />
+                        <label for="hb_ch_3"></label>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <div id="foreign_house_id">
+            <table class="block_content">
+                <tr class="bonus_data">
+                    <td class="content">Есть зарплатная карта Сбербанка</td>
+                    <td class="bonus_value"><input class='hidden' value="0.3" /></td>
+                    <td class="checkbox_holder">
+                        <input id="fh_ch_1" class="check_box" type="checkbox" onclick="hide_show_if(this, 'fh_ndfl');"
+                            autocomplete="off" />
+                        <label for="fh_ch_1"></label>
+                    </td>
+                </tr>
+                <tr id="fh_ndfl" class="bonus_data">
+                    <td class="content">Есть возможность подтвердить доход справкой 2-НДФЛ или по форме банка</td>
+                    <td class="bonus_value"><input class='hidden' value="0.3" />-0.3%</td>
+                    <td class="checkbox_holder">
+                        <input id="fh_ch_2" class="check_box" type="checkbox" onclick="sync_chanel()" autocomplete="off" />
+                        <label for="fh_ch_2"></label>
+                    </td>
+                </tr>
+                <tr class="bonus_data">
+                    <td class="content">Страхование жизни</td>
+                    <td class="bonus_value"><input class='hidden' value="1.0" />-1%</td>
+                    <td class="checkbox_holder">
+                        <input id="fh_ch_3" class="check_box" type="checkbox" onclick="sync_chanel()" autocomplete="off" />
+                        <label for="fh_ch_3"></label>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <div id="um_credit_id">
+            <table class="block_content">
+                <tr class="bonus_data">
+                    <td class="content">Есть зарплатная карта Сбербанка</td>
+                    <td class="bonus_value"><input class='hidden' value="0.3" /></td>
+                    <td class="checkbox_holder">
+                        <input id="um_ch_1" class="check_box" type="checkbox" onclick="hide_show_if(this, 'um_ndfl');"
+                            autocomplete="off" />
+                        <label for="um_ch_1"></label>
+                    </td>
+                </tr>
+                <tr id="um_ndfl" class="bonus_data">
+                    <td class="content">Есть возможность подтвердить доход справкой 2-НДФЛ или по форме банка</td>
+                    <td class="bonus_value"><input class='hidden' value="0.3" />-0.3%</td>
+                    <td class="checkbox_holder">
+                        <input id="um_ch_2" class="check_box" type="checkbox" onclick="sync_chanel()" autocomplete="off" />
+                        <label for="um_ch_2"></label>
+                    </td>
+                </tr>
+                <tr class="bonus_data">
+                    <td class="content">Страхование жизни</td>
+                    <td class="bonus_value"><input class='hidden' value="1.0" />-1%</td>
+                    <td class="checkbox_holder">
+                        <input id="um_ch_3" class="check_box" type="checkbox" onclick="sync_chanel()" autocomplete="off" />
+                        <label for="um_ch_3"></label>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <div id="garage_buying_id">
+            <table class="block_content">
+                <tr class="bonus_data">
+                    <td class="content">Есть зарплатная карта Сбербанка</td>
+                    <td class="bonus_value"><input class='hidden' value="0.3" /></td>
+                    <td class="checkbox_holder">
+                        <input id="gb_ch_1" class="check_box" type="checkbox" onclick="hide_show_if(this, 'gb_ndfl');"
+                            autocomplete="off" />
+                        <label for="gb_ch_1"></label>
+                    </td>
+                </tr>
+                <tr id="gb_ndfl" class="bonus_data">
+                    <td class="content">Есть возможность подтвердить доход справкой 2-НДФЛ или по форме банка</td>
+                    <td class="bonus_value"><input class='hidden' value="0.3" />-0.3%</td>
+                    <td class="checkbox_holder">
+                        <input id="gb_ch_2" class="check_box" type="checkbox" onclick="sync_chanel()" autocomplete="off" />
+                        <label for="gb_ch_2"></label>
+                    </td>
+                </tr>
+                <tr class="bonus_data">
+                    <td class="content">Страхование жизни</td>
+                    <td class="bonus_value"><input class='hidden' value="1.0" />-1%</td>
+                    <td class="checkbox_holder">
+                        <input id="gb_ch_3" class="check_box" type="checkbox" onclick="sync_chanel()" autocomplete="off" />
+                        <label for="gb_ch_3"></label>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</body>
+
+</html>

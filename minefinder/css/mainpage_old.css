@@ -1,0 +1,15 @@
+.hidden {
+    display : none;
+}
+
+.visible {
+    display : block;
+}
+
+.isMarked {
+    background-color : #FF0000;
+}
+
+.notMarked {
+    background-color : #00FF00;
+}

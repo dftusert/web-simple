@@ -1,0 +1,16 @@
+.createRoomStyle, .enterRoomStyle, .deleteRoomStyle {
+    position : absolute;
+    text-align : center;
+}
+
+.createRoomStyle {
+    left : 10%;
+}
+
+.enterRoomStyle {
+    left : 40%;
+}
+
+.deleteRoomStyle{
+    right : 10%;
+}

@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <meta charset = "utf-8" />
+        <link rel = "stylesheet" href = "styles.css" />
+        <title>&lt;=&gt;</title>
+    </head>
+    <body>
+        <!-- блок создания комнаты -->
+        <div class = "createRoomStyle">
+            <form method = "POST" action = "../scripts/createRoom.php">
+                <span>Create Room</span><br />
+                <input type = "text" name = "roomName" placeholder = "room name" required /><br />
+                <input type = "password" name = "fPassword1" placeholder = "room password 1" /><br />
+                <input type = "password" name = "rPassword1" placeholder = "repeat room password 1" /><br />
+                <input type = "password" name = "fPassword2" placeholder = "room password 2" /><br />
+                <input type = "password" name = "rPassword2" placeholder = "repeat room password 2" /><br />
+                <input type = "password" name = "fPassword3" placeholder = "room password 3" /><br />
+                <input type = "password" name = "rPassword3" placeholder = "repeat room password 3" /><p></p>
+                <input type = "submit" value = "Create Room" />
+            </form>
+        </div>
+        <!-- блок входа в комнату -->
+        <div class = "enterRoomStyle">
+            <form method = "POST" action = "../scripts/logInRoom.php">
+                <span>Enter Room</span><br />
+                <input type = "text" name = "userName" placeholder = "username" /><br />
+                <input type = "text" name = "roomName" placeholder = "room name" required /><br />
+                <input type = "password" name = "fPassword1" placeholder = "room password 1" /><br />
+                <input type = "password" name = "rPassword1" placeholder = "repeat room password 1" /><br />
+                <input type = "password" name = "fPassword2" placeholder = "room password 2" /><br />
+                <input type = "password" name = "rPassword2" placeholder = "repeat room password 2" /><br />
+                <input type = "password" name = "fPassword3" placeholder = "room password 3" /><br />
+                <input type = "password" name = "rPassword3" placeholder = "repeat room password 3" /><p></p>
+                <input type = "submit" value = "Enter Room" />
+            </form>
+        </div>
+        <!-- блок удаления комнаты -->
+        <div class = "deleteRoomStyle">
+            <form method = "POST" action = "../scripts/deleteRoom.php">
+                <span>Delete Room</span><br />
+                <input type = "text" name = "roomName" placeholder = "room name" /><br />
+                 <input type = "password" name = "fPassword1" placeholder = "room password 1" /><br />
+                <input type = "password" name = "rPassword1" placeholder = "repeat room password 1" /><br />
+                <input type = "password" name = "fPassword2" placeholder = "room password 2" /><br />
+                <input type = "password" name = "rPassword2" placeholder = "repeat room password 2" /><br />
+                <input type = "password" name = "fPassword3" placeholder = "room password 3" /><br />
+                <input type = "password" name = "rPassword3" placeholder = "repeat room password 3" /><p></p>
+                <input type = "submit" value = "Delete Room" />
+            </form>
+        </div>
+    </body>
+</html>

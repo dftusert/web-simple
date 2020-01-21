@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <meta charset = "utf-8" />
+        <link rel = "stylesheet" href = "../css/mainpage.css" />
+        <script type = "text/javascript" src = "../js/variables.js"></script>
+        <script type = "text/javascript" src = "../js/drawFunctions.js"></script>
+        <script type = "text/javascript" src = "../js/eventTriggers.js"></script>
+        <script type = "text/javascript" src = "../js/initVariables.js"></script>
+        <title>&lt;MineFinderGame&gt;</title>
+    </head>
+    <body>
+        <div id = "header">
+           <div class = "data">
+               <span id = "bombsText">bombs: </span>
+               <p></p>
+               <span id = "openBoxText">opened: 0</span>
+               <p></p>
+               <span id = "markText">marked: 0</span>
+               <p></p>
+               <input type = "button" id = "markButton" value = "mark box" onclick = "setMark ()" class = "notMarked" />
+           </div>
+           <div class = "buttons">
+               <input type = "button" id = "infoButton" value = "read info before" onclick = "showInfo ()" />
+               <p></p>
+               <input type = "button" id = "settingsButton" value = "show settings" onclick = "showSettings ()" />
+               <p></p>
+               <input type = "button" id = "gameButton" value = "start game" onclick = "startGame ()" />
+           </div>
+        </div>
+        <div id = "info" class = "hidden">
+        </div>
+        <div id = "menu" class = "hidden">
+            <span>Bombs count: </span><input type = "number" id = "bombsCount" /><br />
+            <span>Count of boxes by X: </span><input type = "number" id = "xCount" /><br />
+            <span>Count of boxes by Y: </span><input type = "number" id = "yCount" /><br />
+            <input type = "button" value = "submit" onclick = "makeChanges ()" />
+        </div>
+        <p></p>
+        <div id = "main">
+            <canvas id = "field">canvas error</canvas>
+        </div>
+    </body>
+</html>

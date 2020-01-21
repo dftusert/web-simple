@@ -1,0 +1,76 @@
+***************************************************************
+*                                                             *
+*                  Very simple chat                           *
+*                Created ~19 Aug 2017                         *
+*                                                             *
+***************************************************************
+*                                                             *
+*    PHP Version 7.1.6 - Tested                               *
+*    Server Apache 2.4.25 - Tested                            *
+*    SQLite Library 3.7.17 - Tested                           *
+*                                                             *
+*    Main start page                                          *
+*    /mainpage/index.html                                     *
+*                                                             *
+***************************************************************
+---------------------------------------------------------------
+|    /mainpage/index.html                                     |
+|    Main page of webroom                                     |
+---------------------------------------------------------------
+---------------------------------------------------------------
+|    /mainpage/styles.css                                     |
+|    Styles for main page                                     |
+---------------------------------------------------------------
+---------------------------------------------------------------
+|    /rooms/                                                  |
+|    Directory where new rooms will be created                |
+|    and be stored for a while                                |
+---------------------------------------------------------------
+---------------------------------------------------------------
+|    /scripts/baseFunc.php                                    |
+|    Set of base functions                                    |
+|    Include values check, query results check and etc.       |
+|    Included by other script (require_once)                  |
+---------------------------------------------------------------
+---------------------------------------------------------------
+|    /scripts/config.php                                      |
+|    Set of config to make connection with database           |
+|    and generation COOKIESET                                 |
+---------------------------------------------------------------
+---------------------------------------------------------------
+|    /scripts/createRoom.php                                  |
+|    Script for room creating                                 |
+|    Require config.php and baseFunc.php                      |
+---------------------------------------------------------------
+---------------------------------------------------------------
+|    /scripts/deleteRoom.php                                  |
+|    Script for room deleting                                 |
+|    Require config.php and baseFunc.php                      |
+---------------------------------------------------------------
+---------------------------------------------------------------
+|    /scripts/logInRoom.php                                   |
+|    Script for log in room                                   |
+|    Require config.php and baseFunc.php                      |
+---------------------------------------------------------------
+---------------------------------------------------------------
+|    /simpleInit/docs/                                        |
+|    Stores index.php....                                     |
+|    Is mainly intended for                                   |
+|    copy / create in the room                                |
+---------------------------------------------------------------
+---------------------------------------------------------------
+|    /simpleInit/index.php                                    |
+|    The file to be copied to the root of each room           |
+|    Important for its work                                   |
+|    Outside the room non-working                             |
+---------------------------------------------------------------
+---------------------------------------------------------------
+|    /simpleInit/test.php                                     |      
+|    The file to be copied to the root of each room           |
+|    Important for its work                                   |
+|    Outside the room non-working                             |
+---------------------------------------------------------------
+---------------------------------------------------------------
+|    /SQL_CHATTABLE_CREATE_D_MADM/CHATTABLE.sql               |
+|    SQL script for creating table                            |
+---------------------------------------------------------------

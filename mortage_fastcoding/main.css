@@ -1,0 +1,271 @@
+body { 
+    background-color: rgb(242, 244, 246);
+    font-family: SeroPro,Helvetica,Arial,Lucida Grande,sans-serif;
+    font-size: 13px;
+}
+
+.calc_wrapper{
+    width: 60%;
+    background-color: rgb(255, 255, 255);
+    margin-top: 30px;
+    margin-left: 30px;
+    padding-bottom: 30px;
+}
+
+.main {
+    width: 60%;
+    background-color: rgb(255, 255, 255);
+    margin-top: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding-bottom: 10px;
+}
+
+.calc_line, .line {
+    height: 50px;
+    margin-bottom: 50px;
+}
+
+.text_info_select, .text_info {
+    width: 30%;
+    height: 100%;
+    display: inline-block;
+    padding-left: 30px;
+    font-weight: 600;
+}
+
+.line {
+    margin-bottom: 15px;
+    height: 5px;
+}
+
+.line div {
+    width: 45%;
+    text-align: center;
+}
+
+.data_input_select, .data_input {
+    width: 60%;
+    height: 100%;
+    display: inline-block;
+    font-weight: 500;
+    margin-top: 20px;
+}
+
+select {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #c9cbcd;
+}
+
+.text_info {
+    transform: translateY(-40%); 
+}
+
+.data_input {
+    height: 100%;
+    border: 1px solid #c9cbcd;
+}
+
+
+.baseinp {
+    width: 100%;
+    height: 100%;
+    padding-left: 15px;
+    font-size: 20px;
+    color: #4b545b;
+}
+
+.calc_data_right, .calc_data_left {
+    font-weight: 500;
+    color: #53b374;
+    font-size: 20;
+}
+
+.calc_data_right {
+    float: right;
+}
+
+.calc_data_left {
+    float: left;
+}
+
+#error {
+    padding-top: 30px;
+    padding-bottom: 20px;
+    padding-left: 50px;
+    margin: auto;
+    color: #53b374;
+    font-size: 17;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+.tbl_wrapper {
+    margin-left: 30px;
+    width: 60%;
+}
+
+.tbl_inp_open {
+    width: 50%;
+    height: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 25%;
+    font-size: 13px;
+    padding: 0px;
+    background-color: #FFFFFF;
+    color: #4b545b;
+    border: 1px solid #53b374;
+}
+
+.tbl {
+    width: 100%;
+    height: 250px;
+    overflow: auto;
+}
+
+.tbl table {
+    width: 100%;
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 13px;
+    overflow: scroll;
+    overflow-y: auto;
+}
+
+.tbl table td {
+    border: 1px solid #53b374;
+    text-align: center;
+    color: #4b545b;
+}
+
+.spanholder {
+    padding-bottom: 10px;
+}
+
+.blocks_holder {
+    width: 60%;
+    margin-left: 30px;
+    padding-bottom: 50px; 
+    background-color: #FFFFFF;
+    font-size: 16px;
+}
+
+.block_content {
+    margin-left: 30px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.content {
+    width: 70%;
+}
+
+.bonus_value {
+    width: 3%;
+}
+
+.check_box {
+    font-size: 1.6em;
+    width: 30px;
+    height: 30px;
+}
+
+input[type=checkbox] {
+    visibility: hidden;
+}
+
+.checkbox_holder {
+	position: relative;
+}
+
+.checkbox_holder label {
+	cursor: pointer;
+	position: absolute;
+	top: 0;
+    -webkit-appearance: none;
+    border: double 2px #8C8C8C;
+    background-color:white;
+    color:#FFF;
+    white-space: nowrap;
+    width:35px;
+    height:35px;
+
+}
+
+.checkbox_holder label:after {
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity=0);
+	opacity: 0;
+	content: '';
+	position: absolute;
+	width: 14px;
+	height: 8px;
+	background: transparent;
+	top: 8px;
+	left: 8px;
+	border: 3px solid #000;
+	border-top: none;
+	border-right: none;
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+
+.checkbox_holder input[type=checkbox]:checked + label:after {
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	filter: alpha(opacity=100);
+	opacity: 1;
+}
+
+.slidecontainer {
+    width: 100%;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 5px;
+    border-radius: 5px;
+    outline: none;
+    padding: 0px;
+    margin: 0;
+
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: rgb(83, 179, 116);
+    background: rgb(83, 179, 116);
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb { 
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: rgb(83, 179, 116);
+    background: rgb(83, 179, 116);
+    cursor: pointer;
+}
