@@ -1,6 +1,6 @@
 =================================================================================
 Created  ~on 28 Aug 2017
-Simple mine sweeper game in browser or in console
+mine sweeper game in browser or in console
 
 minefinder/ext/Minesweeper.java - mine sweeper java console game
 Minesweeper.java should be divided into several files later
